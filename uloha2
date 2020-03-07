@@ -1,0 +1,57 @@
+package sample;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font;
+import javafx.scene.paint.Color;
+import java.util.Scanner;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Group root = new Group();
+        primaryStage.setTitle("colortext");
+        Scene scene1 = new Scene(root,1600,900);
+        primaryStage.setScene(scene1);
+        primaryStage.show();
+        Scanner vstup = new Scanner(System.in);
+
+        String text = vstup.nextLine();
+        int samohlaska=0;
+        int spoluhlaska=0;
+
+        for (int i=0; i<text.length(); i++) {
+            String znak = text.substring(i, i + 1);
+            if (znak.matches("[aeiouyäáéíóôúýAEIOUYÁÉÍÓÚÝ]")) samohlaska++;
+            if (znak.matches("[dtnlhkgďťňľcčžšjmbpvzsfrDTNLHKGĎŤŇĽCČŽŠJMBPVZSFR]")) spoluhlaska++;
+        }
+
+        int r = (samohlaska*16);
+        int g = (spoluhlaska*24);
+        int b = ((text.length()%25)*10);
+        if (r>255) r=255;
+        if (g>255) g=255;
+        if (b>255) b=255;
+
+        Text text1 = new Text();
+        text1.setText(text);
+        text1.setFont(Font.font("Arial",50));
+        text1.setFill(Color.WHITE);
+        text1.layoutXProperty().bind(scene1.widthProperty().subtract(text1.prefWidth(-1)).divide(2));
+        text1.layoutYProperty().bind(scene1.heightProperty().subtract(text1.prefHeight(-1)).divide(2));
+        scene1.setFill(Color.rgb(r,g,b));
+        root.getChildren().addAll(text1);
+    }
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
