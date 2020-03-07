@@ -1,0 +1,71 @@
+package sample;
+
+import javafx.application.Application;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.scene.shape.Polyline;
+import javafx.scene.paint.Color;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.Group;
+import javafx.fxml.FXMLLoader;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Group source = new Group();
+        Scene template = new Scene(source,1600,900);
+        template.setFill(Color.BLACK);
+        primaryStage.setScene(template);
+        primaryStage.setTitle("Sings");
+        primaryStage.show();
+
+
+
+        Polyline Yrden = new Polyline(260,350,350,200,100,200,350,600,350,600,100,600,185,450);
+        Yrden.setStroke(Color.rgb(207,194,215));
+        Yrden.setStrokeWidth(6);
+        DropShadow bg1 = new DropShadow(70,Color.rgb(87,20,126));
+        bg1.setSpread(0.89);
+        Yrden.setEffect(bg1);
+
+        Polyline Quen = new Polyline(550,285,640,285,700,200,400,200,550,600,600,450);
+        Quen.setStroke(Color.rgb(255,255,111));
+        Quen.setStrokeWidth(6);
+        DropShadow bg2 = new DropShadow(70,Color.rgb(126,111,16));
+        bg2.setSpread(0.89);
+        Quen.setEffect(bg2);
+
+        Polyline Igni = new Polyline(800,200,650,600,1000,600,850,300);
+        Igni.setStroke(Color.rgb(255,200,200));
+        Igni.setStrokeWidth(6);
+        DropShadow bg3 = new DropShadow(70,Color.rgb(129,17,16));
+        bg3.setSpread(0.89);
+        Igni.setEffect(bg3);
+
+        Polyline Axie = new Polyline(1250,200,900,200,1100,600,1230,300);
+        Axie.setStroke(Color.rgb(150,255,150));
+        Axie.setStrokeWidth(6);
+        DropShadow bg4 = new DropShadow(70,Color.rgb(14,99,8));
+        bg4.setSpread(0.89);
+        Axie.setEffect(bg4);
+
+        Polyline Aard = new Polyline(1300,320,1350,200,1550,600,1200,600,1250,500,1350,500);
+        Aard.setStroke(Color.rgb(0,255,255));
+        Aard.setStrokeWidth(6);
+        DropShadow bg5 = new DropShadow(70,Color.rgb(13,101,77));
+        bg5.setSpread(0.89);
+        Aard.setEffect(bg5);
+
+        source.getChildren().addAll(Yrden, Quen, Igni, Axie, Aard);
+
+    }
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
